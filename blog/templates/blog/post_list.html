@@ -6,7 +6,7 @@ by date less than or equal to the current time (__lte). -->
   {% for post in posts %} <!-- to allow html to understand python, use these curly brackets with percent symbols bracketing the code -->
       <div class="post">
           <p class="time">Published: {{ post.published_date }}</p>
-          <h2><a href="">{{ post.title }}</a></h2>
+          <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
           <p class="post_text">{{ post.text|linebreaksbr }}</p>
       </div>
       <hr>
