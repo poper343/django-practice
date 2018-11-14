@@ -1,0 +1,15 @@
+html, *{
+  margin: 0;
+  padding: 0;
+}
+
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(100,100,0);
+}
+
+h1 {
+  font-family: Roboto;
+
+}
