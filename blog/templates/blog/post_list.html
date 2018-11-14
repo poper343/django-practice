@@ -1,28 +1,14 @@
-<!doctype html>
-
-<!-- Tell HTML to access the static directory and look for a css format -->
-{% load static %}
-
-<html>
-  <head>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/blogstyle.css' %}"> <!-- This is the way to reference the css file -->
-    <title>Steven's Blog</title>
-  </head>
-
-  <body>
-    <div class="flexbox"><h1>Welcome to Steven's Blog</h1></div>
-
 <!-- Loop through all of the post objects that have been filtered, see "views.py"
 by date less than or equal to the current time (__lte). -->
-    {% for post in posts %} <!-- to allow html to understand python, use these curly brackets with percent symbols bracketing the code -->
-        <div class="post">
-            <p>Published: {{ post.published_date }}</p>
-            <h2><a href="">{{ post.title }}</a></h2>
-            <p>{{ post.text|linebreaksbr }}</p>
-        </div>
-        <hr>
-    {% endfor %}
+{% extends 'blog/base.html' %} <!-- Use the template base.html -->
 
-  </body>
+{% block content %}
+  {% for post in posts %} <!-- to allow html to understand python, use these curly brackets with percent symbols bracketing the code -->
+      <div class="post">
+          <p class="time">Published: {{ post.published_date }}</p>
+          <h2><a href="">{{ post.title }}</a></h2>
+          <p class="post_text">{{ post.text|linebreaksbr }}</p>
+      </div>
+      <hr>
+  {% endfor %}
+{% endblock %}

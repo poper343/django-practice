@@ -1,0 +1,44 @@
+<!doctype html>
+<!-- this is a "template" file for the blog model. using the following curly bracket
+and percent sign commands:
+we can put our code in another file that will be used to fill the  lines. -->
+
+
+
+<!-- Tell HTML to access the static directory and look for a css format -->
+{% load static %}
+
+<html>
+  <head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/styleblog.css' %}"> <!-- This is the way to reference the css file -->
+    <title>Steven's Blog</title>
+  </head>
+
+  <body>
+
+    <div class="flexbox">
+      <div>
+        <h1>Welcome to Steven's Blog</h1>
+        <hr>
+        <p style="color: white; text-align: center;">Thank you for visiting the site!</p>
+      </div>
+    </div>
+
+<!-- Make the site dock/nav bar -->
+    <div class="dock">
+      <ul class="navbar">
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#newpost">New Post</a></li>
+        <li><a href="#account">Account</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+<!-- Loop through all of the post objects that have been filtered, see "views.py"
+by date less than or equal to the current time (__lte). -->
+    {% block content %} <!-- Here -->
+    {% endblock %}
+
+  </body>
